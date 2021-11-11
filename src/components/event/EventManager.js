@@ -19,7 +19,7 @@ export const createEvent = (event) => {
             "Authorization": `Token ${localStorage.getItem("lu_token")}`,  //so the server knows who's logged in
             "Content-Type": 'application/json'  //so the server knows what kind of data we're passing it
         },
-        body: JSON.stringify(game)  //since it's a POST, we have to send  the body
+        body: JSON.stringify(event)  //since it's a POST, we have to send  the body
     })
         .then(getEvents)
 }
