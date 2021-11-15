@@ -23,3 +23,26 @@ export const createEvent = (event) => {
     })
         .then(getEvents)
 }
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ~~~~ FOR THE CUSTOM ACTION~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    // join event is for our custom action 'signup' (the POST if statement) in server side views>event.py
+    // The custom action is: the user can sign up or cancel their attendance in an event using this url:
+    // http://localhost:8000/events/2/signup
+    // where 2 is will be the event's pk; signup is the custom event's name.  Whatever we name it, that's what will appear here in the url 
+
+export const joinEvent = eventId => {                                       //the eventId parameter refers to the id of the event the user is joining.  
+    return fetch(`http://localhost:8000/events/${ eventId }/signup`, {      //you can see the eventId argument will be passed into the url for the custom event.
+                                                                            //that url has the route to our custom event
+        method: "POST",                                                     //POST will add the user who clicks 'join' to the event attendees 
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("lu_token")}`    //authorize as the currently logged in user
+        }                                                                   //We don't need a body in this POST because all we need is the user, and we're getting that from the header
+    })
+        .then(response => response.json())                                  //invoke .json on the response 
+}
+
+    // Now we need the 'join event' button in eventlist.js

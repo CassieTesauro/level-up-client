@@ -14,7 +14,7 @@ export const EventForm = () => {
 
     const changeEventState = (domEvent) => {  
         const copyEvent = {...currentEvent} //make a copy of the current event so we can make changes to the copy
-        copyEvent[domEvent.target.name] = domEvent.target.value//we'll just update whatever field has the same key as the name field on the input field
+        copyEvent[domEvent.target.name] = domEvent.target.value//we'll just update whatever field has the same key as the name field on the input field.  domEvent is just a parameter, it could be called anything
         setEvent(copyEvent)//once the updates have happened, we invoke setEvent and pass in the event copy with the changes
     }
 
