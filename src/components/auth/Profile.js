@@ -22,7 +22,7 @@ export const Profile = () => {
                 {/* TODO: show the user's first and last name */}
                     Welcome: firstName lastName
                 </div>
-                {/* TODO: show the user's username */}
+                {/* TODO: show the user's username 
                 <div className="profile__username">Username: username</div>
                 {/* TODO: show the user's bio */}
                 <div className="profile__bio">About you: bio</div>
