@@ -19,20 +19,25 @@ export const Profile = () => {
                     <h3>Your Info</h3>
                 </header>
                 <div className="profile__name">
-                {/* TODO: show the user's first and last name */}
-                    Welcome: firstName lastName
+                    Welcome: {profile.gamer?.user?.first_name} {profile.gamer?.user?.last_name}
                 </div>
-                {/* TODO: show the user's username */}
-                <div className="profile__username">Username: username</div>
-                {/* TODO: show the user's bio */}
-                <div className="profile__bio">About you: bio</div>
+                <div className="profile__username">Username: {profile.gamer?.user?.username}</div>
+              
+                <div className="profile__bio">About you: {profile.gamer?.bio}</div>
             </section>
             <section className="profile__registrations">
                 <header className="registrations__header">
                     <h3>Events you are attending</h3>
                 </header>
                 <div className="registrations">
-                    {/* TODO: Map through the events the user is attending */}
+                {profile?.attending?.map((att) => {
+                        return <section>
+                            <div>{att?.game?.title}</div>
+                            <div>{att?.description}</div>
+                            <div>On {att?.date} @ {att?.time}</div>
+                        </section>
+                    })
+                    }
                 </div>
             </section>
             <section className="profile__registrations">
@@ -40,7 +45,14 @@ export const Profile = () => {
                     <h3>Events you are hosting</h3>
                 </header>
                 <div className="registrations">
-                    {/* TODO: Map through the events the user is hosting */}
+                {profile?.hosting?.map((host) => {
+                        return <section>
+                            <div>{host?.game?.title}</div>
+                            <div>{host?.description}</div>
+                            <div>On {host?.date} @ {host?.time}</div>
+                        </section>
+                    })
+                    }
                 </div>
             </section>
         </article>
